@@ -8,13 +8,6 @@
 //    >>0.00
 //  Output:
 //    >>42
-//2.To calculate the numbe of S = 1.5(i.e., S = 3/2) eigenstates for n = 9
-//  Input:
-//    >>9
-//    >>1.5
-//  Output:
-//    >>192
-//NOTE: The output comes multiplied by 'multiplicity' corresponding to S
 //##############################################################################
 //##############################################################################
 #include<iostream>
