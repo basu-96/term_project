@@ -33,7 +33,7 @@ int main()
   float S;//total spin for which the number of eigenstates has to be calculated
   cin >> n;
   cin >> S;
-  cout << (2*S + 1) * states(n, S) << endl;
+  cout << states(n, S) << endl;
 
   return 0;
 }
