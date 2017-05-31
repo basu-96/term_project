@@ -31,7 +31,7 @@ int main()
 	//cout << ranks.size() << endl;
 	//blocs = p2.second;
 	//cout << "Blocs:\n";
-	display_vector(blocs);
+	//display_vector(blocs);
 	//cout << endl;
 	/*cout << "Enter hamiltonian term:";
 	cin >> i >> j;
