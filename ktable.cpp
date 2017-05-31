@@ -27,11 +27,11 @@ int main()
 	cin >>n;
 	p2 = k_coupled(n);
 	vector<int> ranks(n + p2.first);
-	fill(ranks.begin(), ranks.end(), 0);
+	//fill(ranks.begin(), ranks.end(), 0);
 	//cout << ranks.size() << endl;
-	blocs = p2.second;
+	//blocs = p2.second;
 	//cout << "Blocs:\n";
-	//display_vector(blocs);
+	display_vector(blocs);
 	//cout << endl;
 	/*cout << "Enter hamiltonian term:";
 	cin >> i >> j;
@@ -84,6 +84,22 @@ void display_vector(const vector<int> &v)
 ////////////////////////////////////////////////////////////////////////////////
 void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
 {
+	int it = 1;
+	ofstream outf;
+	outf.open("ranks.txt");
+	for(int i = 0; i < blocs[0]; i++)
+	{
+		outf <<"k"<< i+1 << "\t";
+	}
+	for(int i = 1; i < blocs.size(); i++)
+	{
+		for (int j = 0; j < blocs[i]; j++)
+		{
+			outf <<"c"<< it << "\t";
+			it++;
+		}
+	}
+	outf << endl;
 	for (int i = 1; i <= n; i++)
 	{
 		fill(ranks.begin(), ranks.end(), 0);
@@ -91,6 +107,7 @@ void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
 		int ptr2 = 0;
 
 		ranks[i-1] = ranks[i%n] = 1;
+
 		for(int i = 1; i < blocs.size(); i++)
 		{
 			ptr2 = ptr2 + blocs[i-1];
@@ -103,6 +120,12 @@ void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
 		}
 
 		display_vector(ranks);
+		for (int i = 0; i < ranks.size(); i++)
+		{
+			outf << ranks[i] << "\t";
+		}
+		outf << endl;
 		cout << endl;
 	}
+	outf.close();
 }
