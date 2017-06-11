@@ -11,20 +11,11 @@ using namespace std;
 pair <int, vector<int> > k_coupled(int);
 void display_vector(const vector<int> &);
 void display_ranks(int, vector<int> &, vector<int> &);
-<<<<<<< HEAD
-vector<float> spin_add(float ,float);
-=======
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 
 int main()
 {
 	pair <int, vector<int> > p2;
 	vector<int> blocs;
-<<<<<<< HEAD
-	vector<vector<float> > spin;
-	vector<float> total_spin;
-=======
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	int n;//number of spins
 	//int i, j;
 	//int ptr1 = 0;
@@ -38,11 +29,7 @@ int main()
 	vector<int> ranks(n + p2.first);
 	//fill(ranks.begin(), ranks.end(), 0);
 	//cout << ranks.size() << endl;
-<<<<<<< HEAD
-	blocs = p2.second;
-=======
 	//blocs = p2.second;
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	//cout << "Blocs:\n";
 	//display_vector(blocs);
 	//cout << endl;
@@ -64,32 +51,15 @@ int main()
 	}*/
 
 	//display_vector(ranks);
-<<<<<<< HEAD
-
-	//display_ranks(n, ranks, blocs);
-	//putting the individual spins
-	vector<float> temp;
-	temp.push_back(0.5);
-	for(int i = 0; i < n; i++)
-	{
-		spin[i] = temp;
-	}
-=======
 	cout << endl;
 	display_ranks(n, ranks, blocs);
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	return 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
 
 pair <int, vector<int> > k_coupled(int n)
 {
-<<<<<<< HEAD
-	vector<int> blocs;//this stores the number of intermediate tensor ranks
-	//after each level of paring up
-=======
 	vector<int> blocs;
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	int result;
 	//pair <int, vector<int> > p1(result, blocs);
 	int temp = n;
@@ -113,12 +83,7 @@ void display_vector(const vector<int> &v)
 }
 ////////////////////////////////////////////////////////////////////////////////
 void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
-<<<<<<< HEAD
-{/*************************************/
-	//txt output
-=======
 {
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	int it = 1;
 	ofstream outf;
 	outf.open("ranks.txt");
@@ -135,10 +100,6 @@ void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
 		}
 	}
 	outf << endl;
-<<<<<<< HEAD
-	//****************************************************
-=======
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
 	for (int i = 1; i <= n; i++)
 	{
 		fill(ranks.begin(), ranks.end(), 0);
@@ -168,18 +129,3 @@ void display_ranks(int n, vector<int> &ranks, vector<int> &blocs)
 	}
 	outf.close();
 }
-<<<<<<< HEAD
-//////////////////////////////////////////////////////////////////////////////
-vector<float> spin_add(float s1, float s2)
-{
-	vector<float> result;
-	float i = abs(s1 - s2);
-	while(i <= s1 + s2)
-	{
-		result.push_back(i);
-		i = i + 1;
-	}
-	return result;
-}
-=======
->>>>>>> 348c7b6a21936b2636f6fff6f191dcbbad5904cf
