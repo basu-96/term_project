@@ -39,39 +39,53 @@ int main()
   cout << "enter number of spins:";
   cin >> n;
   int node = 0;
+
   vector<float> spin;
   spin = add_spin(0.5, 0.5);
-  vector<pair<int, float> > graph;
-  graph.push_back(make_pair(node, spin[0]));
-  node++;
-  graph.push_back(make_pair(node, spin[1]));
-  node++;
+  //display_vector(spin);
+  //cout << endl;
+  vector<pair<int, float> > ns_pair;//vector of 'node-spin' pairs
+  for(int i = 0; i < spin.size(); i++)
+  {
+    ns_pair.push_back(make_pair(node, spin[i]));
+    node++;
+  }
+  /*for(int i = 0; i < ns_pair.size(); i++)
+  {
+    cout << ns_pair[i].first << "\t" << ns_pair[i].second << endl;
+  }
+  */
+
   for(int i = 2; i < n; i++)
   {
+    int j = 0;
     int layer = 0;
-    for(int j = 0; j < spin.size(); j++)
+    //cout << spin.size() << endl;
+    while(j < spin.size())
     {
-      vector<float> temp = add_spin(0.5 ,spin[j]);
+      vector<float> temp = add_spin(0.5 , spin[j]);
       for(int l = 0; l < temp.size(); l++)
       {
 
-        graph.push_back(make_pair(node, temp[l]));
+        ns_pair.push_back(make_pair(node, temp[l]));
         node++;
         layer++;
       }
+      j++;
     }
     spin.resize(0);
     for(int i= node-layer; i < node; i++)
     {
-      spin.push_back(graph[i].second);
+      spin.push_back(ns_pair[i].second);
     }
   }
-  for(int i = 0; i < graph.size(); i++)
+  for(int i = 0; i < ns_pair.size(); i++)
   {
-    cout << graph[i].first << "\t" << graph[i].second << endl;
+    cout << ns_pair[i].first << "\t" << ns_pair[i].second << endl;
   }
-  display_vector(spin);
-  cout << endl;
+
+  //display_vector(spin);
+  //cout << endl;
   return 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -91,5 +105,6 @@ vector <float> add_spin(float s1, float s2)
 void display_vector(const vector<float> &v)
 {
 	copy(v.begin(), v.end(), ostream_iterator<float>(cout, " "));
+  cout << endl;
 }
 ////////////////////////////////////////////////////////////////////////////////
