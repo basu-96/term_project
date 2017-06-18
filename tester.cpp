@@ -29,7 +29,6 @@ public:
 void Graph::add_edge(int v, int w)
 {
   adj[v].push_back(w);
-  adj[w].push_back(v);
 }
 ////////////////////////////////////////////////////////////////////////
 
@@ -39,7 +38,8 @@ int main()
   cout << "enter number of spins:";
   cin >> n;
   int node = 0;
-  
+  vector<float> fata;
+  //Graph graph(11);//this is only for n = 4
   vector<float> spin;
   spin = add_spin(0.5, 0.5);
   //display_vector(spin);
@@ -48,6 +48,7 @@ int main()
   vector<pair<int, float> > buffer;// stores ns_pair for each layer
   for(int i = 0; i < spin.size(); i++)
   {
+    fata.push_back(spin[i]);
     ns_pair.push_back(make_pair(node, spin[i]));
     node++;
   }
@@ -68,7 +69,9 @@ int main()
       vector<float> temp = add_spin(0.5 , buffer[j].second);
       for(int l = 0; l < temp.size(); l++)
       {
-
+        //graph.add_edge(node, buffer[j].first);
+        cout << node << "\t" << buffer[j].first << endl;
+        fata.push_back(temp[l]);
         ns_pair.push_back(make_pair(node, temp[l]));
         node++;
         layer++;
@@ -81,12 +84,13 @@ int main()
       buffer.push_back(make_pair(ns_pair[i].first, ns_pair[i].second));
     }
   }
+  /*
   for(int i = 0; i < ns_pair.size(); i++)
   {
     cout << ns_pair[i].first << "\t" << ns_pair[i].second << endl;
   }
-
-  //display_vector(spin);
+  */
+  display_vector(fata);
   //cout << endl;
   return 0;
 }
