@@ -13,25 +13,7 @@ using namespace std;
 vector <float> add_spin(float, float);
 void display_vector(const vector<float> &);
 /////////////////////////////////////////////////////////////////////////
-class Graph
-{
-private:
-  int V;
-  list<int> *adj;
-public:
-  Graph(int V)
-  {
-    this->V = V;
-    adj = new list<int>[V];
-  }
-  void add_edge(int , int );
-};
-void Graph::add_edge(int v, int w)
-{
-  adj[v].push_back(w);
-  adj[w].push_back(v);
-}
-////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////
 
 int main()
 {
