@@ -1,3 +1,4 @@
+/*
 #include<iostream>
 #include<vector>
 #include<utility>
@@ -5,7 +6,7 @@
 #include<iterator>
 #include<cmath>
 #include<fstream>
-
+*/
 using namespace std;
 
 struct node
@@ -14,12 +15,12 @@ struct node
   node *next;
 };
 
-class list
+class my_list
 {
 private:
   node *head, *tail;
 public:
-  list();
+  my_list();
   void createnode(int);
   void display();
   void insert_start(int);
@@ -29,12 +30,12 @@ public:
   void delete_position(int);
 };
 
-int main()
+my_list::my_list()
 {
-  return 0;
+  head = NULL;
+  tail = NULL;
 }
-
-void list::createnode(int value)
+void my_list::createnode(int value)
 {
   node *temp=new node;
 	temp->data=value;
@@ -51,7 +52,7 @@ void list::createnode(int value)
 		tail=temp;
   }
 }
-void list::display()
+void my_list::display()
 {
   node *temp = new node;
   temp = head;
@@ -61,14 +62,14 @@ void list::display()
     temp = temp->next;
   }
 }
-void list::insert_start(int value)
+void my_list::insert_start(int value)
 {
   node *temp = new node;
   temp->data = value;
   temp->next = head;
   head = temp;
 }
-void list::insert_position(int pos, int value)
+void my_list::insert_position(int pos, int value)
 {
   node *pre = new node;
   node *cur = new node;
@@ -83,14 +84,14 @@ void list::insert_position(int pos, int value)
   pre -> next = temp;
   temp -> next = cur;
 }
-void list::delete_first()
+void my_list::delete_first()
 {
   node *temp = new node;
   temp = head;
   head = head -> next;
   delete temp;
 }
-void list::delete_last()
+void my_list::delete_last()
 {
   node *current = new node;
   node *previous = new node;
@@ -101,7 +102,7 @@ void list::delete_last()
     current = current -> next;
   }
 }
-void list::delete_position(int pos)
+void my_list::delete_position(int pos)
 {
   node *current = new node;
   node *previous = new node;
