@@ -101,3 +101,15 @@ void list::delete_last()
     current = current -> next;
   }
 }
+void list::delete_position(int pos)
+{
+  node *current = new node;
+  node *previous = new node;
+  current = head;
+  for(int i = 1; i < pos; i++)
+  {
+    previous = current;
+    current = current -> next;
+  }
+  previous ->next = current -> next;
+}
