@@ -2,74 +2,62 @@
 #include<vector>
 #include<utility>
 #include<algorithm>
-#include<list>
 #include<iterator>
 #include<cmath>
 #include<fstream>
+//#include "linked_list.cpp"
 
 
 using namespace std;
 
 vector <float> add_spin(float, float);
 void display_vector(const vector<float> &);
+
 /////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////
 
 int main()
 {
-  int n;
-  cout << "enter number of spins:";
-  cin >> n;
-  int node = 0;
+    int n;
+    cout << "enter number of spins:";
+    cin >> n;
 
-  vector<float> spin;
-  spin = add_spin(0.5, 0.5);
-  //display_vector(spin);
-  //cout << endl;
-  vector<pair<int, float> > ns_pair;//vector of 'node-spin' pairs
-  vector<pair<int, float> > buffer;// stores ns_pair for each layer
-  for(int i = 0; i < spin.size(); i++)
-  {
-    ns_pair.push_back(make_pair(node, spin[i]));
-    node++;
-  }
-  buffer = ns_pair;
-  /*for(int i = 0; i < ns_pair.size(); i++)
-  {
-    cout << ns_pair[i].first << "\t" << ns_pair[i].second << endl;
-  }
-  */
-
-  for(int i = 2; i < n; i++)
-  {
-    int j = 0;
-    int layer = 0;
-    //cout << spin.size() << endl;
-    while(j < buffer.size())
+    int layer;
+    vector<float> test_ns_pair;
+    vector<float> spin;
+    spin = add_spin(0.5, 0.5);
+    vector<float> buffer;// stores ns_pair for each layer
+    for(int i = 0; i < spin.size(); i++)
     {
-      vector<float> temp = add_spin(0.5 , buffer[j].second);
-      for(int l = 0; l < temp.size(); l++)
+      test_ns_pair.push_back(spin[i]);
+    }
+    buffer = test_ns_pair;
+
+    for(int i = 2; i < n; i++)
+    {
+      int j = 0;
+      layer = 0;
+      while(j < buffer.size())
       {
-
-        ns_pair.push_back(make_pair(node, temp[l]));
-        node++;
-        layer++;
+        vector<float> temp = add_spin(0.5 , buffer[j]);
+        for(int l = 0; l < temp.size(); l++)
+        {
+          test_ns_pair.push_back(temp[l]);
+          layer++;
+        }
+        j++;
       }
-      j++;
+      buffer.resize(0);
+      for(int i= test_ns_pair.size()-layer; i < test_ns_pair.size(); i++)
+      {
+        buffer.push_back(test_ns_pair[i]);
+      }
     }
-    buffer.resize(0);
-    for(int i= node-layer; i < node; i++)
+    for(int i = 0; i < test_ns_pair.size(); i++)
     {
-      buffer.push_back(make_pair(ns_pair[i].first, ns_pair[i].second));
+      cout << i << "\t" << test_ns_pair[i] << endl;
     }
-  }
-  for(int i = 0; i < ns_pair.size(); i++)
-  {
-    cout << ns_pair[i].first << "\t" << ns_pair[i].second << endl;
-  }
-
-  //display_vector(spin);
-  //cout << endl;
   return 0;
 }
 ////////////////////////////////////////////////////////////////////////////////
