@@ -47,11 +47,11 @@ int main()
     }
     my_node.push_back(temp);
   }
-
+  /*
   for(int i = 0; i < 5; i++)
   {
     cout << my_node[i]->next << endl;
-  }
+  }*/
   node *temp = new node;
   temp = my_node[my_node.size() - 1];
   while(temp!=NULL)
