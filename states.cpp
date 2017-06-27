@@ -7,6 +7,8 @@
 #include<fstream>
 //#include "linked_list.cpp"
 
+static const float spin_value = 0.5;
+
 
 using namespace std;
 
@@ -35,7 +37,7 @@ int main()
     vector<node *> my_node;
     //vector<float> test_ns_pair;
     vector<float> spin;
-    spin = add_spin(0.5, 0.5);
+    spin = add_spin(spin_value, spin_value);
     vector<node *> buffer;// stores ns_pair for each layer
     for(int i = 0; i < spin.size(); i++)
     {
@@ -56,7 +58,7 @@ int main()
       layer = 0;
       while(j < buffer.size())
       {
-        vector<float> temp = add_spin(0.5 , buffer[j]->data);
+        vector<float> temp = add_spin(spin_value , buffer[j]->data);
         for(int l = 0; l < temp.size(); l++)
         {
           node *tempn = new node;
